@@ -14,7 +14,7 @@ var ircServer = 'irc.mozilla.org',
 client.addListener('message', function (from, to, message) {
     console.log(from + ' => ' + to + ': ' + message);
     logger.log({channel:to,from:from, message:message});
-    if (message.search(nick) === 0){
+    if (message.search(nick) >= 0){
         if (message.search(" hi[ $]?") >= 1){
            client.say("#automation", "Hi hi " + from);
        }
