@@ -18,6 +18,9 @@ client.addListener('message', function (from, to, message) {
         if (message.search(" hi[ $]?") >= 1){
            client.say("#automation", "Hi hi " + from);
        }
+       if (message.search("damn you") >= 0) {
+            client.say("#automation", "I am so sorry " + from + ", can we hug?");
+       }
     }
 
     if (message.search(":gist") === 0){
