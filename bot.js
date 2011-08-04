@@ -13,26 +13,25 @@ var ircServer = 'irc.mozilla.org',
 
 client.addListener('message', function (from, to, message) {
     console.log(from + ' => ' + to + ': ' + message);
-    logger.log({channel:to,from:from, message:message});
+    logger.log({channel:to, from:from, message:message});
     if (message.search(nick) >= 0){
         if (message.search(" hi[ $]?") >= 1){
-           client.say("#automation", "Hi hi " + from);
+           client.say(to, "Hi hi " + from);
        }
        if (message.search("damn you") >= 0) {
-            client.say("#automation", "I am so sorry " + from + ", can we hug?");
+            client.say(, "I am so sorry " + from + ", can we hug?");
        }
     }
 
     if (message.search(":gist") === 0){
-        client.say("#automation", "Please paste >3 lines of text to http://pastebin.mozilla.org");
+        client.say(to, "Please paste >3 lines of text to http://pastebin.mozilla.org");
     }
 
     if (message.search(":help") === 0){
         for (var item in help){
-            client.say("#automation", item + " : " + help[item]);
+            client.say(to, item + " : " + help[item]);
         }
     }
 });
-
 
 
