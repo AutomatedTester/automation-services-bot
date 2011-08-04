@@ -4,7 +4,7 @@ var irc = require('irc'),
     logger = require('./logger');
 
 var ircServer = 'irc.mozilla.org',
-    nick = 'AutomationBot',
+    nick = 'AutomationBot2',
     options = {channels: ['#automation'],},
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
@@ -19,7 +19,7 @@ client.addListener('message', function (from, to, message) {
            client.say(to, "Hi hi " + from);
        }
        if (message.search("damn you") >= 0) {
-            client.say(, "I am so sorry " + from + ", can we hug?");
+            client.say(to, "I am so sorry " + from + ", can we hug?");
        }
     }
 
@@ -34,4 +34,15 @@ client.addListener('message', function (from, to, message) {
     }
 });
 
+client.addListener('join', function(channel, who){
+    logger.log({channel:channel, action: "join", who: who});
+});
+
+client.addListener('part', function(channel, who, reason){
+    logger.log({channel:channel, action: "part", who: who, reason:reason})
+});
+
+client.addListener('kick', function(channel, who, by, reason) {
+    logger.log({who:who, channel:channel, by:by, reason:reason, action:'kick'});
+});
 
