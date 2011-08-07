@@ -8,5 +8,6 @@ exports.log = function(messageObject){
         now = Date.now()
         messageObject["timestamp"] = now;
         redisClient.rpush('automation', JSON.stringify(messageObject));
+        redisClient.publish("automation", JSON.stringify(messageObject));
         redisClient.quit();
 }
