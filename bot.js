@@ -46,3 +46,14 @@ client.addListener('kick', function(channel, who, by, reason) {
     logger.log({who:who, channel:channel, by:by, reason:reason, action:'kick'});
 });
 
+client.addListener('invite', function(channel, from){
+    logger.log({channel:channel, action:"invite", from:from});
+});
+
+client.addListener('nick', function(oldnick, newnick, channel){
+    logger.log({channel:channel, action:"nick", oldnick:oldnick, newnick:newnick});
+});
+
+client.addListener('error', function(message){
+    console.error("message");
+});
