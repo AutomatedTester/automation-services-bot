@@ -48,10 +48,14 @@ client.addListener('message', function (from, to, message) {
                 apiResult += d;
             });
             res.on('end', function(){
-                data = JSON.parse(apiResult);
-                title = data["feed"]["entry"][0]["title"]["$t"]
-                link = data["feed"]["entry"][0]["link"][0]["href"];
-                client.say(to, title + " -- " + link);
+                try{
+                    data = JSON.parse(apiResult);
+                    title = data["feed"]["entry"][0]["title"]["$t"]
+                    link = data["feed"]["entry"][0]["link"][0]["href"];
+                    client.say(to, title + " -- " + link);
+                } catch(e) {
+                    console.error(e.message);
+                }
             });
         });
         req.end();
