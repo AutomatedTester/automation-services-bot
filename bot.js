@@ -9,6 +9,7 @@ var ircServer = 'irc.mozilla.org',
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
              ":gist" : "Gives you a link to Pastebin",
+             ":yt" : "Pass in your search and I will give you a youtube link"
             };
 
 client.addListener('message', function (from, to, message) {
@@ -31,6 +32,29 @@ client.addListener('message', function (from, to, message) {
         for (var item in help){
             client.say(to, item + " : " + help[item]);
         }
+    }
+
+    if (message.search(":yt") === 0){
+        var options = {
+            host: 'gdata.youtube.com',
+            port: 443,
+            path: "/feeds/api/videos?q=" + message.substring(4).replace(/ /g, '+') + "&alt=json",
+            method: 'GET'
+        };
+        var req = http.request(options, function(res) {
+            var apiResult = '';
+            
+            res.on('data', function(d) {
+                apiResult += d;
+            });
+            res.on('end', function(){
+                data = JSON.parse(apiResult);
+                title = data["feed"]["entry"][0]["title"]["$t"]
+                link = data["feed"]["entry"][0]["link"][0]["href"];
+                client.say(to, title + " -- " + link);
+            });
+        });
+        req.end();
     }
 });
 
