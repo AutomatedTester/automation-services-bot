@@ -11,6 +11,7 @@ var ircServer = 'irc.mozilla.org',
              ":gist" : "Gives you a link to Pastebin",
              ":yt" : "Pass in your search and I will give you a youtube link",
              "Bugzilla" : "Just add bug xxxxxx to a conversation and it will show a summary of the bug",
+             ":source" : "Returns the GitHub URL for me",
             };
 
 client.addListener('message', function (from, to, message) {
@@ -93,6 +94,10 @@ client.addListener('message', function (from, to, message) {
             });
         });
         req.end();
+    }
+
+    if (message.search(":source") === 0){
+        client.say(to, "My code lives at https://github.com/AutomatedTester/automation-services-bot/. Go have a look!");
     }
 });
 
