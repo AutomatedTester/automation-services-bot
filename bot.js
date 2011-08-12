@@ -82,6 +82,10 @@ client.addListener('message', function (from, to, message) {
                 try{
                     data = JSON.parse(apiResult);
                     url = "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugID;
+                    if (data["bugs"].length === 0){
+                        client.say(to, "Sorry " + from + " that bug doesn't exist! I suggest you get raising more bugs until it does!");
+                        return;
+                    }
                     summary = data["bugs"]["0"]["summary"];
                     severity = data["bugs"]["0"]["severity"];
                     status = data["bugs"]["0"]["status"];
