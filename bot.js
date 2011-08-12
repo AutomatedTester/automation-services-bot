@@ -9,7 +9,8 @@ var ircServer = 'irc.mozilla.org',
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
              ":gist" : "Gives you a link to Pastebin",
-             ":yt" : "Pass in your search and I will give you a youtube link"
+             ":yt" : "Pass in your search and I will give you a youtube link",
+             "Bugzilla" : "Just add bug xxxxxx to a conversation and it will show a summary of the bug",
             };
 
 client.addListener('message', function (from, to, message) {
