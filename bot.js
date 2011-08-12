@@ -60,6 +60,39 @@ client.addListener('message', function (from, to, message) {
         });
         req.end();
     }
+
+    if (message.search(/bug \d{6}/) >= 0){
+        var bugID = "";
+        bugID = /bug (\d{6})/.exec(message)[1];
+        var options = {
+            host: 'api-dev.bugzilla.mozilla.org',
+            port: 443,
+            path: "/0.9/bug?id=" + bugID,
+            method: 'GET'
+        };
+        var apiResult = ''
+        var req = http.request(options, function(res) {
+            res.on('data', function(d) {
+                apiResult += d; 
+            });
+            
+            res.on('end', function(){
+                try{
+                    data = JSON.parse(apiResult);
+                    url = "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugID;
+                    summary = data["bugs"]["0"]["summary"];
+                    severity = data["bugs"]["0"]["severity"];
+                    status = data["bugs"]["0"]["status"];
+                    resolution = data["bugs"]["0"]["resolution"];
+
+                    client.say(to, "Bug " + url + " " + severity + ", " + status + " " + resolution + ", " + summary); 
+                }catch(e){
+                    console.error(e);            
+                }
+            });
+        });
+        req.end();
+    }
 });
 
 client.addListener('join', function(channel, who){
