@@ -12,6 +12,7 @@ var ircServer = 'irc.mozilla.org',
              ":yt" : "Pass in your search and I will give you a youtube link",
              "Bugzilla" : "Just add bug xxxxxx to a conversation and it will show a summary of the bug",
              ":source" : "Returns the GitHub URL for me",
+             ":pivotal" : "Type in the name project to get it's link or leave blank to get an entire list",
             };
 
 client.addListener('message', function (from, to, message) {
@@ -102,6 +103,27 @@ client.addListener('message', function (from, to, message) {
 
     if (message.search(":source") === 0){
         client.say(to, "My code lives at https://github.com/AutomatedTester/automation-services-bot/. Go have a look!");
+    }
+
+    if (message.search(":pivotal") === 0){
+        var projects = {
+            "team" : "https://www.pivotaltracker.com/projects/323503",
+            "shared modules" : "https://www.pivotaltracker.com/projects/344657",
+        }
+
+        var project = /^:pivotal ((\w+)?(\s\w+)?)/.exec(message)
+        if (project === null){
+            for (var item in projects){
+                client.say(to, item + ' - ' + projects[item]);
+            }
+        } else {
+            try {
+                console.log(project);
+                client.say(to, project[1] + ' - ' + projects[project[1]]);
+            } catch (e) {
+                client.say(to, "Unfortunately that project doesn't appear to exist"); 
+            }
+        }
     }
 });
 
