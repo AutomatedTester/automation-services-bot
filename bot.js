@@ -109,6 +109,7 @@ client.addListener('message', function (from, to, message) {
         var projects = {
             "team" : "https://www.pivotaltracker.com/projects/323503",
             "shared modules" : "https://www.pivotaltracker.com/projects/344657",
+            "web apps" : "https://www.pivotaltracker.com/projects/350145",
         }
 
         var project = /^:pivotal ((\w+)?(\s\w+)?)/.exec(message)
