@@ -13,6 +13,7 @@ var ircServer = 'irc.mozilla.org',
              "Bugzilla" : "Just add bug xxxxxx to a conversation and it will show a summary of the bug",
              ":source" : "Returns the GitHub URL for me",
              ":pivotal" : "Type in the name project to get it's link or leave blank to get an entire list",
+             ":list" : "Either returns the URL to the Google Group or a link with your search topic",
             };
 
 client.addListener('message', function (from, to, message) {
@@ -124,6 +125,15 @@ client.addListener('message', function (from, to, message) {
             } catch (e) {
                 client.say(to, "Unfortunately that project doesn't appear to exist"); 
             }
+        }
+    }
+
+    if (message.search(":list") === 0){
+        var search = /:list (.+)/.exec(message);
+        if (search === null){
+            client.say(to, "http://groups.google.com/group/mozilla.dev.automation");
+        } else {
+            client.say(to, "http://groups.google.com/group/mozilla.dev.automation/search?group=mozilla.dev.automation&q=" + search[1].replace(/ /g, '+') + "&qt_g=Search+this+group");
         }
     }
 });
