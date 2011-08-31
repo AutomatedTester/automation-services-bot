@@ -158,6 +158,9 @@ client.addListener('nick', function(oldnick, newnick, channel){
     logger.log({channel:channel, action:"nick", oldnick:oldnick, newnick:newnick});
 });
 
+client.addListener('quit', function(who, reason, channel){
+    logger.log({channel:channel, action: "quit", who: who, reason:reason})
+});
 client.addListener('error', function(message){
     console.error("message");
 });
