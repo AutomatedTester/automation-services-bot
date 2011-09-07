@@ -65,9 +65,9 @@ client.addListener('message', function (from, to, message) {
         req.end();
     }
 
-    if (message.search(/bug \d{6}/) >= 0){
+    if (message.search(/bug \d{6}/i) >= 0){
         var bugID = "";
-        bugID = /bug (\d{6})/.exec(message)[1];
+        bugID = /bug (\d{6})/i.exec(message)[1];
         var options = {
             host: 'api-dev.bugzilla.mozilla.org',
             port: 443,
