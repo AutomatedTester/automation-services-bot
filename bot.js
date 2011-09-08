@@ -81,19 +81,23 @@ client.addListener('message', function (from, to, message) {
             });
             
             res.on('end', function(){
+                var returnMessage = '';
                 try{
                     data = JSON.parse(apiResult);
                     url = "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugID;
                     if (data["bugs"].length === 0){
-                        client.say(to, "Sorry " + from + " that bug doesn't exist! I suggest you get raising more bugs until it does!");
+                        returnMessage = "Sorry " + from + " that bug doesn't exist! I suggest you get raising more bugs until it does!";
+                        logger.log({channel:to, from:nick, message:returnMessage}); 
+                        client.say(to, returnMessage);
                         return;
                     }
                     summary = data["bugs"]["0"]["summary"];
                     severity = data["bugs"]["0"]["severity"];
                     status = data["bugs"]["0"]["status"];
                     resolution = data["bugs"]["0"]["resolution"];
-
-                    client.say(to, "Bug " + url + " " + severity + ", " + status + " " + resolution + ", " + summary); 
+                    returnMessage = "Bug " + url + " " + severity + ", " + status + " " + resolution + ", " + summary;
+                    logger.log({channel:to, from:nick, message:returnMessage});
+                    client.say(to, returnMessage); 
                 }catch(e){
                     console.error(e);            
                 }
