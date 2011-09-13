@@ -115,6 +115,9 @@ client.addListener('message', function (from, to, message) {
             "team" : "https://www.pivotaltracker.com/projects/323503",
             "shared modules" : "https://www.pivotaltracker.com/projects/344657",
             "web apps" : "https://www.pivotaltracker.com/projects/350145",
+            "mozmill automation" : "https://www.pivotaltracker.com/projects/298905",
+            "api refactor" : "https://www.pivotaltracker.com/projects/311747",
+            "dashboard" : "https://www.pivotaltracker.com/projects/294869",
         }
 
         var project = /^:pivotal ((\w+)?(\s\w+)?)/.exec(message)
