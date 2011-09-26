@@ -14,6 +14,7 @@ var ircServer = 'irc.mozilla.org',
              ":source" : "Returns the GitHub URL for me",
              ":pivotal" : "Type in the name project to get it's link or leave blank to get an entire list",
              ":list" : "Either returns the URL to the Google Group or a link with your search topic",
+             ":standup" : "Shows the details for the standup the team has twice a week",
             };
 
 client.addListener('message', function (from, to, message) {
