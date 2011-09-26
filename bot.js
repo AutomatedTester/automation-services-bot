@@ -143,6 +143,10 @@ client.addListener('message', function (from, to, message) {
             client.say(to, "http://groups.google.com/group/mozilla.dev.automation/search?group=mozilla.dev.automation&q=" + search[1].replace(/ /g, '+') + "&qt_g=Search+this+group");
         }
     }
+
+    if (message.search(":standup") === 0){
+      client.say(to, "Come join us at 2:30 PDT/PST on Monday in PB&J and Wednesday in Warp Core. If you are remote you can join with video and audio on Vidyo https://v.mozilla.com/");
+    }
 });
 
 client.addListener('join', function(channel, who){
