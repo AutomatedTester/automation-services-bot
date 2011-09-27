@@ -15,6 +15,7 @@ var ircServer = 'irc.mozilla.org',
              ":pivotal" : "Type in the name project to get it's link or leave blank to get an entire list",
              ":list" : "Either returns the URL to the Google Group or a link with your search topic",
              ":standup" : "Shows the details for the standup the team has twice a week",
+             ":meeting" : "Shows details and a link to the meetings page",
             };
 
 client.addListener('message', function (from, to, message) {
@@ -148,6 +149,10 @@ client.addListener('message', function (from, to, message) {
     if (message.search(":standup") === 0){
       client.say(to, "Come join us at 2:30 PDT/PST on Monday in PB&J and Wednesday in Warp Core. If you are remote you can join with video and audio on Vidyo https://v.mozilla.com/");
     }
+
+  if (message.search(":meeting") === 0){
+    client.say(to, "Our Meeting is held fortnightly on a Wednesday at 13:30 PDT/PST. Find more details at https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+  }
 });
 
 client.addListener('join', function(channel, who){
