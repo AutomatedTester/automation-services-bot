@@ -151,7 +151,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":meeting") === 0){
-    client.say(to, "Our Meeting is held fortnightly on a Wednesday at 13:30 PDT/PST. Find more details at https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+    client.say(to, "Our Meeting is held every two weeks on a Wednesday at 13:30 PDT/PST. Find more details at https://wiki.mozilla.org/QA/Automation_Services/Meetings");
   }
 });
 
