@@ -35,9 +35,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":help") === 0){
-    for (var item in help){
-      client.say(to, item + " : " + help[item]);
-    }
+    client.say(to, "Please send me a message (eg /msg _AutomationBot help) with the text help to get a list of commands I support");
   }
 
   if (message.search(":yt") === 0){
@@ -152,6 +150,14 @@ client.addListener('message', function (from, to, message) {
 
   if (message.search(":meeting") === 0){
     client.say(to, "Our Meeting is held every two weeks on a Wednesday at 13:30 PDT/PST. Find more details at https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+  }
+});
+
+client.addListener('pm', function(nick, message){
+  if (message.search('help') === 0){
+    for (var item in help){
+      client.say(nick, item + " : " + help[item]);
+    }
   }
 });
 
