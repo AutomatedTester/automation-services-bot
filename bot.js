@@ -145,11 +145,11 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":standup") === 0){
-    client.say(to, "Come join us at 2:30 PDT/PST on Monday in PB&J and Wednesday in Warp Core. If you are remote you can join with video and audio on Vidyo https://v.mozilla.com/");
+    client.say(to, "Come join us at 2:30 PDT/PST on Monday in PB&J and Wednesday in Warp Core. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz");
   }
 
   if (message.search(":meeting") === 0){
-    client.say(to, "Our Meeting is held every two weeks on a Wednesday at 13:30 PDT/PST. Find more details at https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+    client.say(to, "Our Meeting is held every two weeks on a Wednesday at 13:30 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or for more details go to https://wiki.mozilla.org/QA/Automation_Services/Meetings");
   }
 });
 
