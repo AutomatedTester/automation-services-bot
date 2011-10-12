@@ -30,6 +30,7 @@ client.addListener('message', function (from, to, message) {
     }
   }
 
+
   if (message.search(":gist") === 0){
     client.say(to, "Please paste >3 lines of text to http://pastebin.mozilla.org");
   }
