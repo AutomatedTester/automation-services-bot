@@ -108,7 +108,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":source") === 0){
-    client.say(to, "My code lives at https://github.com/AutomatedTester/automation-services-bot/. Go have a look!");
+    client.say(to, "My details and code lives at http://automatedtester.github.com/automation-services-bot/. Go have a look!");
   }
 
   if (message.search(":pivotal") === 0){
