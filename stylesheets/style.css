@@ -22,3 +22,11 @@ code {
   overflow-x: auto;
 }
 
+@media all and (max-width: 600px) {
+  code {
+    margin:5px;
+    padding:5px;
+  }
+}
+
+
