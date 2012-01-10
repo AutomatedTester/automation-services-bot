@@ -4,8 +4,8 @@ var irc = require('irc'),
     logger = require('./logger');
 
 var ircServer = 'irc.mozilla.org',
-    nick = '_AutomationBot1',
-    options = {channels: ['#autotest'],},
+    nick = '_AutomationBot',
+    options = {channels: ['#automation'],},
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
              ":gist" : "Gives you a link to Pastebin",
