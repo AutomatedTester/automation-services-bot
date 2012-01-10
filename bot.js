@@ -4,8 +4,8 @@ var irc = require('irc'),
     logger = require('./logger');
 
 var ircServer = 'irc.mozilla.org',
-    nick = '_AutomationBot',
-    options = {channels: ['#automation'],},
+    nick = '_AutomationBot1',
+    options = {channels: ['#autotest'],},
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
              ":gist" : "Gives you a link to Pastebin",
@@ -66,9 +66,14 @@ client.addListener('message', function (from, to, message) {
     req.end();
   }
 
-  if (message.search(/bug \d+/i) >= 0){
+  if (message.search(/bug \d+/i) >= 0 || message.search(/https:\/\/bugzilla.mozilla.org\/show_bug.cgi\?id=(\d+)/i) >= 0 ){
     var bugID = "";
-    bugID = /bug (\d+)/i.exec(message)[1];
+    if (/bug (\d+)/i.exec(message)) {
+      bugID = /bug (\d+)/i.exec(message)[1]
+    } else {
+      bugID = /https:\/\/bugzilla.mozilla.org\/show_bug.cgi\?id=(\d+)/i.exec(message)[1];
+    }
+
     var options = {
         host: 'api-dev.bugzilla.mozilla.org',
         port: 443,
