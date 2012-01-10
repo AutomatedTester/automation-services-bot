@@ -3,3 +3,6 @@ deploy:
 
 push:
 	git push origin master
+
+setup:
+	npm install
