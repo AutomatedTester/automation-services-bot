@@ -151,7 +151,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":standup") === 0){
-    client.say(to, "Come join us at 2:30 PDT/PST on Monday in PB&J and Wednesday in Warp Core. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654");
+    client.say(to, "Come join us at 2:30 PDT/PST on Wednesday in Warp Core. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654");
   }
 
   if (message.search(":meeting") === 0){
