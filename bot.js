@@ -155,7 +155,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":meeting") === 0){
-    client.say(to, "Our Meeting is held every two weeks on a Wednesday at 13:30 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+    client.say(to, "Our Meeting is held every week on a Monday at 14:00 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/QA/Automation_Services/Meetings");
   }
 });
 
