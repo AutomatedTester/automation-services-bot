@@ -1,4 +1,4 @@
-redis = require('redis');
+var redis = require('redis');
 
 exports.log = function(messageObject){
         redisClient = redis.createClient();
