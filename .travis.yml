@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - 0.6
-  env:
-    - DB=mongo DB=redis
+env:
+  - DB=mongo DB=redis
 
- notifications:
-   email:
-     - powerball@theautomatedtester.co.uk
+notifications:
+  email:
+    - powerball@theautomatedtester.co.uk
