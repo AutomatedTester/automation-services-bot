@@ -20,7 +20,7 @@ var ircServer = 'irc.mozilla.org',
              ":github" : "Will show a list of Github projects for that team",
            },
     github = {
-      autotest: {
+      automation: {
         "memchaser" : "https://github.com/whimboo/memchaser",
         "mozmill-dashboard" : "https://github.com/whimboo/mozmill-dashboard",
         "pytest-mozwebqa" : "https://github.com/davehunt/pytest-mozwebqa",
