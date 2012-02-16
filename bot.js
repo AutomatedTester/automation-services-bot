@@ -20,7 +20,7 @@ var ircServer = 'irc.mozilla.org',
              ":github" : "Will show a list of Github projects for that team",
            },
     github = {
-      automation: {
+      Automation: {
         "memchaser" : "https://github.com/whimboo/memchaser",
         "mozmill-dashboard" : "https://github.com/whimboo/mozmill-dashboard",
         "pytest-mozwebqa" : "https://github.com/davehunt/pytest-mozwebqa",
@@ -29,7 +29,7 @@ var ircServer = 'irc.mozilla.org',
         "unittest-zero": "https://github.com/automatedtester/unittest-zero",
         "testdaybot" : "https://github.com/automatedtester/testdaybot"
         }
-      , webqa : {
+      , mozwebqa : {
       
       }
     };
@@ -178,6 +178,7 @@ client.addListener('message', function (from, to, message) {
     var project = /:newissue (\w+)/.exec(message);
     if (project !== null){
       var key = to.substring(1);
+      console.log(key);
       if (github[key][project[1]]){
         client.say(to, "Please raise an issue at " + github[key][project[1]] + "/issues/newissue");
       } else {
