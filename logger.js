@@ -49,7 +49,9 @@ exports.log = function(messageObject, callback){
   redisClient.publish("automation", JSON.stringify(messageObject));
   redisClient.quit();
   mongoose.disconnect();
-  callback();
+  if (callback){
+    callback();
+  }
 }
 
 exports.Message = Message;
