@@ -16,7 +16,23 @@ var ircServer = 'irc.mozilla.org',
              ":list" : "Either returns the URL to the Google Group or a link with your search topic",
              ":standup" : "Shows the details for the standup the team has twice a week",
              ":meeting" : "Shows details and a link to the meetings page",
-            };
+             ":newissue" : "Just add :newissue project to a conversation and it will show a summary of the bug",
+             ":github" : "Will show a list of Github projects for that team",
+           },
+    github = {
+      autotest: {
+        "memchaser" : "https://github.com/whimboo/memchaser",
+        "mozmill-dashboard" : "https://github.com/whimboo/mozmill-dashboard",
+        "pytest-mozwebqa" : "https://github.com/davehunt/pytest-mozwebqa",
+        "mozmill-crowd" : "https://github.com/whimboo/mozmill-crowd",
+        "automation-services-bot" : "https://github.com/automatedtester/automation-services-bot",
+        "unittest-zero": "https://github.com/automatedtester/unittest-zero",
+        "testdaybot" : "https://github.com/automatedtester/testdaybot"
+        }
+      , webqa : {
+      
+      }
+    };
 
 client.addListener('message', function (from, to, message) {
   console.log(from + ' => ' + to + ': ' + message);
@@ -156,6 +172,28 @@ client.addListener('message', function (from, to, message) {
 
   if (message.search(":meeting") === 0){
     client.say(to, "Our Meeting is held every week on a Monday at 14:00 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+  }
+
+  if (message.search(":newissue") >= 0){
+    var project = /:newissue (\w+)/.exec(message);
+    if (project !== null){
+      var key = to.substring(1);
+      if (github[key][project[1]]){
+        client.say(to, "Please raise an issue at " + github[key][project[1]] + "/issues/newissue");
+      } else {
+        client.say(to, "I am sorry I don't know of that project. Please raise an issue on " +
+            "http://oss.theautomatedtester.co.uk//automation-services-bot/ if I should know about it");
+      }
+    } else {
+      client.say(to, "please use the syntax :newissue project. You can get a list of projects by calling :github");
+    }
+  }
+
+  if (message.search(":github") === 0){
+    var projects = github[to.substring(1)];
+    for (var item in projects){
+      client.say(from, item + " : " + projects[item]);
+    }
   }
 });
 
