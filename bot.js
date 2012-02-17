@@ -175,7 +175,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":newissue") >= 0){
-    var project = /:newissue ([a-z-_])/.exec(message);
+    var project = /:newissue ([a-z-_]+)/.exec(message);
     if (project !== null){
       var key = to.substring(1).toLowerCase();
       console.log(key);
