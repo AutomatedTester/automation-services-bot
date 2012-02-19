@@ -7,4 +7,4 @@ env:
 
 notifications:
   email:
-    - powerball@theautomatedtester.co.uk
+    - travis-ci@theautomatedtester.co.uk
