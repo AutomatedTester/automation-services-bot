@@ -6,7 +6,7 @@
       "irc": ">= 0.0.1"
       , "redis": ">= 0.0.1"
       , "mongoose": "2.3.5"
-      , "mocha": "0.3.2"
+      , "mocha": "0.12.1"
   }
   , "scripts": {
         "test": "mocha --reporter spec -t 20000"
