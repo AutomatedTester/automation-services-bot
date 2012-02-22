@@ -184,7 +184,7 @@ client.addListener('message', function (from, to, message) {
       var key = to.substring(1).toLowerCase();
       console.log(key);
       if (github[key][project[1]]){
-        client.say(to, "Please raise an issue at " + github[key][project[1]] + "/issues/newissue");
+        client.say(to, "Please raise an issue at " + github[key][project[1]] + "/issues/new");
       } else {
         client.say(to, "I am sorry I don't know of that project. Please raise an issue on " +
             "http://oss.theautomatedtester.co.uk//automation-services-bot/ if I should know about it");
