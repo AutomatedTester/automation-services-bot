@@ -5,7 +5,7 @@ var irc = require('irc'),
 
 var ircServer = 'irc.mozilla.org',
     nick = '_AutomationBot',
-    options = {channels: ['#automation'],},
+    options = {channels: ['#automation', '#mozwebqa'],},
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
              ":gist" : "Gives you a link to Pastebin",
