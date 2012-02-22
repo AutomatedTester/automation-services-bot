@@ -182,11 +182,15 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":standup") === 0){
-    client.say(to, meeting[to.substring(1).toLowerCase()].standup); 
+    if (meeting[to.substring(1).toLowerCase()].standup){
+      client.say(to, meeting[to.substring(1).toLowerCase()].standup);
+    }
   }
 
   if (message.search(":meeting") === 0){
-    client.say(to, meeting[to.substring(1).toLowerCase()].meeting);
+    if (meeting[to.substring(1).toLowerCase()].meeting){
+      client.say(to, meeting[to.substring(1).toLowerCase()].meeting);
+    }
   }
 
   if (message.search(":newissue") >= 0){
