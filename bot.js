@@ -19,6 +19,8 @@ var ircServer = 'irc.mozilla.org',
              ":newissue" : "Just add :newissue project to a conversation and it will show a summary of the bug",
              ":github" : "Will show a list of Github projects for that team",
            },
+
+    //TODO(David) Move the following objects into a datastore. this will make issue #26 much easier to implement
     github = {
       automation: {
         "memchaser" : "https://github.com/whimboo/memchaser",
@@ -31,7 +33,16 @@ var ircServer = 'irc.mozilla.org',
         }
       , mozwebqa : {
       
+      },
+    },
+    meeting = {
+      automation:{
+        standup: "Come join us at 2:30 PDT/PST on Wednesday in Warp Core. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654",
+        meeting: "Our Meeting is held every week on a Monday at 14:00 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/QA/Automation_Services/Meetings",
+      },
+      mozwebqa:{
       }
+
     };
 
 client.addListener('message', function (from, to, message) {
@@ -171,11 +182,11 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":standup") === 0){
-    client.say(to, "Come join us at 2:30 PDT/PST on Wednesday in Warp Core. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654");
+    client.say(to, meeting[to.substring(1).toLowerCase()].standup); 
   }
 
   if (message.search(":meeting") === 0){
-    client.say(to, "Our Meeting is held every week on a Monday at 14:00 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/QA/Automation_Services/Meetings");
+    client.say(to, meeting[to.substring(1).toLowerCase()].meeting);
   }
 
   if (message.search(":newissue") >= 0){
