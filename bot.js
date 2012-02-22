@@ -54,7 +54,9 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":help") === 0){
-    client.say(to, from + ": Please send me a message (eg /msg _AutomationBot help) with the text help to get a list of commands I support");
+    for (var item in help){
+      client.say(from, item + " : " + help[item]);
+    }
   }
 
   if (message.search(":yt") === 0){
