@@ -32,7 +32,6 @@ var ircServer = 'irc.mozilla.org',
         "testdaybot" : "https://github.com/automatedtester/testdaybot"
         }
       , mozwebqa : {
-      
       },
     },
     meeting = {
@@ -183,6 +182,7 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":standup") === 0){
+    console.log(to.substring(1).toLowerCase());
     if (meeting[to.substring(1).toLowerCase()].standup){
       client.say(to, meeting[to.substring(1).toLowerCase()].standup);
     }
