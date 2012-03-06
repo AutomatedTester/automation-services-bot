@@ -46,7 +46,10 @@ var ircServer = 'irc.mozilla.org',
     };
 
 client.addListener('message', function (from, to, message) {
-  if (to.toLowerCase() === 'firebot') return;
+  if (from === 'firebot') {
+    console.log("ignoreing firebot")
+    return;
+  }
 
   console.log(from + ' => ' + to + ': ' + message);
   logger.log({channel:to, from:from, message:message});
