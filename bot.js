@@ -29,7 +29,8 @@ var ircServer = 'irc.mozilla.org',
         "mozmill-crowd" : "https://github.com/whimboo/mozmill-crowd",
         "automation-services-bot" : "https://github.com/automatedtester/automation-services-bot",
         "unittest-zero": "https://github.com/automatedtester/unittest-zero",
-        "testdaybot" : "https://github.com/automatedtester/testdaybot"
+        "testdaybot" : "https://github.com/automatedtester/testdaybot",
+        "nightlytt" : "https://github.com/mozilla/nightlytt"
         }
       , mozwebqa : {
       },
