@@ -144,6 +144,12 @@ client.addListener('message', function (from, to, message) {
         }
       });
     });
+
+    res.on('error', function (error) {
+      console.error(error);
+      client.say(to, "Unfortunately there was an error trying to retrieve that bug, please try again. If this happens again please ping AutomatedTester");
+    });
+
     req.end();
   }
 
