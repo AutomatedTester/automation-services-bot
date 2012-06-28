@@ -41,7 +41,7 @@ var ircServer = 'irc.mozilla.org',
         meeting: "Our Meeting is held every week on a Monday at 14:00 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings",
       },
       mozwebqa:{
-        meeting: "Come join us at 9AM PDT/PST on a Thursday.You can join in with Vidyo https://v.mozilla.com/flex.html?roomdirect.html&key=ZAlDIwL9AJcf or dial in 650-903-0800 or 650-215-1282 x92 Conf# 303 (US/INTL) or 1-800-707-2533 (pin 369) Conf# 303 (US)",
+        meeting: "Come join us at 9AM PDT/PST on a Thursday.You can join in with Vidyo https://v.mozilla.com/flex.html?roomdirect.html&key=ZAlDIwL9AJcf or dial in 650-903-0800 or 650-215-1282 x92 Conf# 303 (US/INTL) or 1-800-707-2533 (pin 369) Conf# 9303 (US)",
       }
 
     };
