@@ -112,7 +112,7 @@ client.addListener('message', function (from, to, message) {
     var options = {
         host: 'api-dev.bugzilla.mozilla.org',
         port: 443,
-        path: "/0.9/bug?id=" + bugID,
+        path: "/latest/bug?id=" + bugID,
         method: 'GET'
     };
     var apiResult = ''
