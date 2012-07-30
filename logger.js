@@ -46,7 +46,9 @@ exports.log = function(messageObject, callback){
       throw err;
     }
   });
-  redisClient.publish("automation", JSON.stringify(messageObject));
+  if (messageObject.channel === '#automation'){
+    redisClient.publish("automation", JSON.stringify(messageObject));
+  }
   redisClient.quit();
   mongoose.disconnect();
   if (callback){
