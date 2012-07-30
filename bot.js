@@ -127,7 +127,7 @@ client.addListener('message', function (from, to, message) {
           data = JSON.parse(apiResult);
           url = "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugID;
           if (data["bugs"].length === 0){
-            returnMessage = "Sorry " + from + " that bug doesn't exist! I suggest you get raising more bugs until it does!";
+            returnMessage = "I can not see this bug, try clicking on " + url + " to see if it exists";
             logger.log({channel:to, from:nick, message:returnMessage}); 
             client.say(to, returnMessage);
             return;
