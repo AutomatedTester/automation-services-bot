@@ -37,8 +37,8 @@ var ircServer = 'irc.mozilla.org',
     },
     meeting = {
       automation:{
-        standup: "Come join us at 2:30 PDT/PST on Wednesday in Warp Core. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654",
-        meeting: "Our Meeting is held every week on a Monday at 14:00 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings",
+        expert: "Come join us at 12:00 UTC on Thursday. You can find details at https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings#.22Ask_an_Expert.22_Q.26A_session",
+        meeting: "Our Meeting is held every week on a Monday at 08:45 PDT/PST. You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings",
       },
       mozwebqa:{
         meeting: "Come join us at 9AM PDT/PST on a Thursday.You can join in with Vidyo https://v.mozilla.com/flex.html?roomdirect.html&key=ZAlDIwL9AJcf or dial in 650-903-0800 or 650-215-1282 x92 Conf# 9303 (US/INTL) or 1-800-707-2533 (pin 369) Conf# 9303 (US)",
@@ -191,10 +191,10 @@ client.addListener('message', function (from, to, message) {
     }
   }
 
-  if (message.search(":standup") === 0){
+  if (message.search(":expert") === 0){
     console.log(to.substring(1).toLowerCase());
-    if (meeting[to.substring(1).toLowerCase()].standup){
-      client.say(to, meeting[to.substring(1).toLowerCase()].standup);
+    if (meeting[to.substring(1).toLowerCase()].expert){
+      client.say(to, meeting[to.substring(1).toLowerCase()].expert);
     }
   }
 
