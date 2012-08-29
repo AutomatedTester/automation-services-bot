@@ -195,7 +195,7 @@ client.addListener('message', function (from, to, message) {
   if (message.search(":expert") === 0){
     console.log(to.substring(1).toLowerCase());
     if (meeting[to.substring(1).toLowerCase()].expert){
-      client.say(to, meeting[to.substring(1).toLowerCase()].expert);
+      client.say(to, meeting[to.substring(1).toLowerCase()].expert + " " + meeting[to.substring(1).toLowerCase()].vidyo);
     }
   }
 
