@@ -5,7 +5,7 @@ var irc = require('irc'),
 
 var ircServer = 'irc.mozilla.org',
     nick = '_AutomationBot',
-    options = {channels: ['#automation', '#mozwebqa'],},
+    options = {channels: ['#automation']},
     client = new irc.Client(ircServer, nick, options),
     help = { ":help" : "This is Help! :)",
              ":gist" : "Gives you a link to Pastebin",
@@ -22,34 +22,24 @@ var ircServer = 'irc.mozilla.org',
 
     //TODO(David) Move the following objects into a datastore. this will make issue #26 much easier to implement
     github = {
-      automation: {
-        "memchaser" : "https://github.com/whimboo/memchaser",
-        "mozmill-dashboard" : "https://github.com/whimboo/mozmill-dashboard",
-        "pytest-mozwebqa" : "https://github.com/davehunt/pytest-mozwebqa",
-        "mozmill-crowd" : "https://github.com/whimboo/mozmill-crowd",
-        "automation-services-bot" : "https://github.com/automatedtester/automation-services-bot",
-        "unittest-zero": "https://github.com/automatedtester/unittest-zero",
-        "testdaybot" : "https://github.com/automatedtester/testdaybot",
-        "nightlytt" : "https://github.com/mozilla/nightlytt"
-        }
-      , mozwebqa : {
-      },
+      "memchaser" : "https://github.com/whimboo/memchaser",
+      "mozmill-dashboard" : "https://github.com/whimboo/mozmill-dashboard",
+      "pytest-mozwebqa" : "https://github.com/davehunt/pytest-mozwebqa",
+      "mozmill-crowd" : "https://github.com/whimboo/mozmill-crowd",
+      "automation-services-bot" : "https://github.com/automatedtester/automation-services-bot",
+      "unittest-zero": "https://github.com/automatedtester/unittest-zero",
+      "testdaybot" : "https://github.com/automatedtester/testdaybot",
+      "nightlytt" : "https://github.com/mozilla/nightlytt"
     },
     meeting = {
-      automation:{
-        expert: "Come join us at 12:00 UTC on Thursday. You can find details at https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings#.22Ask_an_Expert.22_Q.26A_session",
-        meeting: "Our Meeting is held every week on a Monday at 08:45 PDT/PST. ",
-        vidyo: "You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings",
-      },
-      mozwebqa:{
-        meeting: "Come join us at 9AM PDT/PST on a Thursday.You can join in with Vidyo https://v.mozilla.com/flex.html?roomdirect.html&key=ZAlDIwL9AJcf or dial in 650-903-0800 or 650-215-1282 x92 Conf# 9303 (US/INTL) or 1-800-707-2533 (pin 369) Conf# 9303 (US)",
-      }
-
+      expert: "Come join us at 12:00 UTC on Thursday. You can find details at https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings#.22Ask_an_Expert.22_Q.26A_session",
+      meeting: "Our Meeting is held every week on a Monday at 08:45 PDT/PST. ",
+      vidyo: "You can join in with Vidyo at https://v.mozilla.com/flex.html?roomdirect.html&key=PGtLpx3XQGJz or if dialing from a room use 63.245.220.25##04654 or for more details go to https://wiki.mozilla.org/Auto-tools/Automation_Development/Meetings"
     };
 
 client.addListener('message', function (from, to, message) {
   if (from === 'firebot') {
-    console.log("ignoreing firebot")
+    console.log("ignoring firebot");
     return;
   }
 
@@ -63,7 +53,6 @@ client.addListener('message', function (from, to, message) {
       client.say(to, "I am so sorry " + from + ", can we hug?");
     }
   }
-
 
   if (message.search(":gist") === 0){
     client.say(to, "Please paste >3 lines of text to http://pastebin.mozilla.org");
@@ -193,22 +182,15 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":expert") === 0){
-    console.log(to.substring(1).toLowerCase());
-    if (meeting[to.substring(1).toLowerCase()].expert){
-      client.say(to, meeting[to.substring(1).toLowerCase()].expert + " " + meeting[to.substring(1).toLowerCase()].vidyo);
-    }
+    client.say(to, meeting.expert + " " + meeting.vidyo);
   }
 
   if (message.search(":meeting") === 0){
-    if (meeting[to.substring(1).toLowerCase()].meeting){
-      client.say(to, meeting[to.substring(1).toLowerCase()].meeting + meeting[to.substring(1).toLowerCase()].vidyo);
-    }
+    client.say(to, meeting.meeting + meeting.vidyo);
   }
   
   if (message.search(":vidyo") === 0){
-    if (meeting[to.substring(1).toLowerCase()].vidyo){
-      client.say(to, meeting[to.substring(1).toLowerCase()].vidyo);
-    }
+    client.say(to, meeting.vidyo);
   }
 
   if (message.search(":newissue") >= 0){
@@ -244,9 +226,8 @@ client.addListener('message', function (from, to, message) {
   }
 
   if (message.search(":github") === 0){
-    var projects = github[to.substring(1).toLowerCase()];
-    for (var item in projects){
-      client.say(from, item + " : " + projects[item]);
+    for (var item in github){
+      client.say(from, item + " : " + github[item]);
     }
   }
 });
