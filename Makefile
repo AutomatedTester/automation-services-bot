@@ -1,5 +1,5 @@
-deploy:
-	git push micro master
+test:
+	npm test
 
 push:
 	git push origin master
