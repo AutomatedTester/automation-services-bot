@@ -5,11 +5,10 @@
   , "dependencies": {
       "irc": ">= 0.0.1"
       , "redis": ">= 0.0.1"
-      , "mongoose": "2.3.5"
-      , "mocha": "0.12.1"
+      , "mongoose": ">= 4.0.2"
+      , "mocha": ">= 2.2.4"
   }
   , "scripts": {
         "test": "mocha --reporter spec -t 20000"
     }
 }
-
