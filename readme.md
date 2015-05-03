@@ -9,5 +9,9 @@ To run the bot do the following:
 
 `node bot.js`
 
+## Supported Platforms
+
+The bot is developed to only work on \*nix systems.
+
 ## Continuous Integration
 [![Build Status](https://secure.travis-ci.org/AutomatedTester/automation-services-bot.png)](http://travis-ci.org/AutomatedTester/automation-services-bot)
